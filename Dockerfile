@@ -1,9 +1,10 @@
-FROM alpine:3.3
+FROM debian:jessie
 
-RUN apk add --no-cache \
+RUN apt-get update -y && apt-get install -y --no-install-recommends \
   curl \
   ca-certificates \
-  unzip
+  unzip \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN curl -sSL https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip \
   > /tmp/browserstack.zip && \
