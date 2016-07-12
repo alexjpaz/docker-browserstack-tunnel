@@ -1,6 +1,7 @@
 FROM debian:jessie
 
 RUN apt-get update -y && apt-get install -y --no-install-recommends \
+  syslinux-utils \
   curl \
   ca-certificates \
   unzip \
@@ -13,4 +14,5 @@ RUN curl -sSL https://www.browserstack.com/browserstack-local/BrowserStackLocal-
 
 ADD discover /usr/bin/discover
 
-CMD browserstack -v -forcelocal -localIdentifier $BROWSERSTACK_ID $BROWSERSTACK_KEY
+ENTRYPOINT ["browserstack"]
+CMD ["-h"]
