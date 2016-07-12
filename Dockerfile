@@ -1,6 +1,7 @@
-FROM debian:jessie
+FROM alpine:3.3
 
-RUN apt-get update -y && apt-get install -y --no-install-recommends \
+RUN apk add --no-cache  \
+  bash \
   curl \
   ca-certificates \
   unzip \
