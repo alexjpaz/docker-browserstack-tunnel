@@ -12,7 +12,12 @@ RUN curl -sSL https://www.browserstack.com/browserstack-local/BrowserStackLocal-
   unzip /tmp/browserstack.zip -d /tmp && \
   mv /tmp/BrowserStackLocal /usr/bin/browserstack
 
-ADD discover /usr/bin/discover
+RUN apt-get remove -y \
+  syslinux-utils \
+  curl \
+  ca-certificates \
+  unzip \
+  && rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT ["browserstack"]
 CMD ["-h"]

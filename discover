@@ -1,7 +1,0 @@
-#!/bin/sh
-
-dnsip=$(gethostip -d dns)
-
-if [ $? -eq 0 ]; then
-  echo "nameserver $dnsip" > /etc/resolv.conf
-fi
